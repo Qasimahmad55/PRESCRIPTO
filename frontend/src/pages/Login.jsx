@@ -1,19 +1,51 @@
-import React, { useState } from 'react'
-
+import React, { useContext, useEffect, useState } from 'react'
+import { AppContext } from '../context/AppContext'
+import axios from 'axios'
+import { toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
 function Login() {
-
+  const navigate = useNavigate()
   const [state, setState] = useState('Sign up')
-
   const [email, setEmail] = useState('')
   const [name, setName] = useState('')
   const [password, setPassword] = useState('')
 
+  const { backendUrl, token, setToken } = useContext(AppContext)
+
   const onSubmitHandler = async (e) => {
-    e.prevetDefault()
+    e.preventDefault()
+    try {
+      if (state === 'Sign up') {
+        const { data } = await axios.post(backendUrl + '/api/user/register', { name, email, password })
+        if (data.success) {
+          localStorage.setItem('token', data.token)
+          setToken(data.token)
+        } else {
+          toast.error(data.message)
+        }
+      } else {
+        const { data } = await axios.post(backendUrl + '/api/user/login', { email, password })
+        if (data.success) {
+          localStorage.setItem('token', data.token)
+          setToken(data.token)
+          toast.success(data.message)
+        } else {
+          toast.error(data.message)
+        }
+      }
+    } catch (error) {
+      toast.error(error.message)
+    }
   }
+
+  useEffect(() => {
+    if (token) {
+      navigate('/')
+    }
+  }, [token])
   return (
     <form
-      onClick={onSubmitHandler}
+      onSubmit={onSubmitHandler}
       className='min-h-[80vh] flex items-center'
     >
       <div className='flex flex-col gap-3 m-auto items-start p-8 min-w-[340px] sm:min-w-96 border border-gray-100 rounded-xl text-zinc-600 text-sm  shadow-lg '>
@@ -49,6 +81,7 @@ function Login() {
           />
         </div>
         <button
+          type='submit'
           className='bg-primary text-white w-full py-2 rounded-md text-base'
         >{state === 'Sign up' ? "Create Account" : "Login"}</button>
         {
