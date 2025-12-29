@@ -28,7 +28,6 @@ const registerUser = async (req, res) => {
             email,
             password: hashedPassword
         }
-
         const newUser = new userModel(userData)
         const user = await newUser.save()
 
