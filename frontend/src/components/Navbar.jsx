@@ -54,7 +54,7 @@ function Navbar() {
                                         className='hover:text-black cursor-pointer'>My Profile</p>
                                     <p
                                         onClick={() => navigate('/my-appointments')}
-                                        className='hover:text-black cursor-pointer'>My Appoitments</p>
+                                        className='hover:text-black cursor-pointer'>My Appointments</p>
                                     <p
                                         onClick={logout}
                                         className='hover:text-black cursor-pointer'>Logout</p>

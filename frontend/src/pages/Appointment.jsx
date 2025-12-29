@@ -26,13 +26,15 @@ function Appointment() {
     //getting current date
     let today = new Date()
     let allSlots = []
+
     for (let i = 0; i < 7; i++) {
       let currentDate = new Date(today)
       currentDate.setDate(today.getDate() + i)
+      //set end date
       let endTime = new Date()
       endTime.setDate(today.getDate() + i)
       endTime.setHours(21, 0, 0, 0)
-
+      //setting hours
       if (today.getDate() === currentDate.getDate()) {
         currentDate.setHours(currentDate.getHours() > 10 ? currentDate.getHours() + 1 : 10)
         currentDate.setMinutes(currentDate.getMinutes() > 30 ? 30 : 0)
@@ -41,9 +43,13 @@ function Appointment() {
         currentDate.setHours(10)
         currentDate.setMinutes(0)
       }
+
       let timeSlots = []
       while (currentDate < endTime) {
-        let formattedTime = currentDate.toLocaleString([], { hour: '2-digit', minute: '2-digit' })
+        let formattedTime = currentDate.toLocaleString([],
+          {
+            hour: '2-digit', minute: '2-digit'
+          })
 
         let day = currentDate.getDate()
         let month = currentDate.getMonth() + 1
