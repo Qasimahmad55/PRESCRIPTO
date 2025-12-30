@@ -196,8 +196,7 @@ const cancelAppointment = async (req, res) => {
         res.json({ success: false, message: error.message })
     }
 }
-//payment method using razorpay
-
+ 
 
 
 export { registerUser, loginUser, getProfile, updateUserProfile, bookAppointment, listAppointment, cancelAppointment }
