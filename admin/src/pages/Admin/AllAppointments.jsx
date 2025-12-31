@@ -10,8 +10,9 @@ function AllAppointments() {
 
   const { calculateAge, slotDateFormat, currency } = useContext(AppContext)
 
-
-
+  // console.log(appointments);
+  
+  
   useEffect(() => {
     if (aToken) {
       getAllAppointments()

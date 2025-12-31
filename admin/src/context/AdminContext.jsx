@@ -15,7 +15,7 @@ const AdminContextPrvider = (props) => {
             const { data } = await axios.post(backendUrl + '/api/admin/all-doctors', {}, { headers: { aToken } })
             if (data.success) {
                 setDoctors(data.doctors)
-                console.log(data.doctors)
+                // console.log(data.doctors)
                 // toast.success("Doctors Fetched Successfully")
             } else {
                 toast.error(data.message)

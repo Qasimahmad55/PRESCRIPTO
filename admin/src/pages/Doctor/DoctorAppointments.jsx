@@ -12,6 +12,7 @@ function DoctorAppointments() {
     useEffect(() => {
         if (dToken) {
             getAppointments()
+            // console.log(appointments);   
         }
     }, [dToken])
     return (
