@@ -14,6 +14,7 @@ function MyAppointments() {
     const dateArray = slotDate.split('_')
     return dateArray[0] + ' ' + months[Number(dateArray[1]) - 1] + ' ' + dateArray[2]
   }
+  // console.log(appointments);
 
   const getUserAppointments = async () => {
     try {
@@ -75,7 +76,9 @@ function MyAppointments() {
               <p className="text-xs mt-1"><span className="text-sm text-neutral-700 font-medium">Date & Time:</span>{slotDateFormat(item.slotDate)} |  {item.slotTime}</p>
             </div>
             <div></div>
-            <div className="flex flex-col gap-2 justify-end">
+            <div className="flex flex-col gap-2 justify-end"
+            // onClick={}//stripe integration
+            >
               {!item.cancelled && !item.isCompleted && (
                 <button className="text-sm text-stone-500 text-center sm:min-w-48 py-2 border rounded hover:bg-primary hover:text-white transition-all duration-300">
                   Pay Online

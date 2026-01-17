@@ -5,6 +5,7 @@ import jwt from 'jsonwebtoken'
 import { v2 as cloudinary } from 'cloudinary'
 import doctorModel from '../models/doctorModel.js'
 import appointmentModel from '../models/appointmentModel.js'
+import stripe from 'stripe'
 //api to register user
 const registerUser = async (req, res) => {
     try {
@@ -196,7 +197,19 @@ const cancelAppointment = async (req, res) => {
         res.json({ success: false, message: error.message })
     }
 }
- 
+//api for online payment
+const StripePayment = async (req, res) => {
+    try {
+        const session = await stripe.checkout.sessions.create(
+            {
+
+            }
+        )
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: error.message })
+    }
+}
 
 
-export { registerUser, loginUser, getProfile, updateUserProfile, bookAppointment, listAppointment, cancelAppointment }
+export { registerUser, loginUser, getProfile, updateUserProfile, bookAppointment, listAppointment, cancelAppointment, StripePayment }
