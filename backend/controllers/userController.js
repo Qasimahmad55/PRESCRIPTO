@@ -215,4 +215,4 @@ const cancelAppointment = async (req, res) => {
 // }
 
 
-export { registerUser, loginUser, getProfile, updateUserProfile, bookAppointment, listAppointment, cancelAppointment, StripePayment }
+export { registerUser, loginUser, getProfile, updateUserProfile, bookAppointment, listAppointment, cancelAppointment }
