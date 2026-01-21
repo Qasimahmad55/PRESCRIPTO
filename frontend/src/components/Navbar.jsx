@@ -1,10 +1,11 @@
 import React, { useContext, useState } from 'react'
 import { assets } from '../assets/assets'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate, useLocation } from 'react-router-dom'
 import { AppContext } from '../context/AppContext'
 
 function Navbar() {
     const navigate = useNavigate()
+    const location = useLocation()
     const [showMenu, setShowMenu] = useState(false)
     const { token, setToken, userData } = useContext(AppContext)
 
@@ -36,9 +37,14 @@ function Navbar() {
                     <li className='py-1'>CONTACT</li>
                     <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden' />
                 </NavLink>
-                <a href={process.env.VITE_ADMIN_URL} target="_blank" rel="noopener noreferrer">
-                    <li className='text-sm border border-gray-300 px-2 py-1 rounded-full'>Admin Panel</li>
-                </a>
+                {location.pathname === '/' && (
+                    <button
+                        onClick={() => window.open(process.env.VITE_ADMIN_URL, '_blank')}
+                        className='bg-primary text-white text-xs px-4 py-2 rounded-full hover:bg-gray-700 hidden md:block'
+                    >
+                        Admin Panel
+                    </button>
+                )}
             </ul>
             <div className='flex items-center gap-4'>
                 {
