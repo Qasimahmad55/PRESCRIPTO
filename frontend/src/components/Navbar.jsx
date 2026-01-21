@@ -19,7 +19,7 @@ function Navbar() {
                 onClick={() => navigate('/')}
                 className='w-44 cursor-pointer'
                 src={assets.logo} alt="" />
-            <ul className='hidden md:flex items-start gap-5 font-medium'>
+            <ul className='hidden md:flex items-start gap-5 font-medium '>
                 <NavLink to='/'>
                     <li className='py-1'>HOME</li>
                     <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden ' />
@@ -35,6 +35,9 @@ function Navbar() {
                 <NavLink to='/contact'>
                     <li className='py-1'>CONTACT</li>
                     <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden' />
+                </NavLink>
+                <NavLink to='http://localhost:5174/' target="_blank" rel="noopener noreferrer">
+                    <li className='text-sm border border-gray-300 px-2 py-1 rounded-full'>Admin Panel</li>
                 </NavLink>
             </ul>
             <div className='flex items-center gap-4'>
