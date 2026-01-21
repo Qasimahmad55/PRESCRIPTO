@@ -39,7 +39,7 @@ function Navbar() {
                 </NavLink>
                 {location.pathname === '/' && (
                     <button
-                        onClick={() => window.open(process.env.VITE_ADMIN_URL, '_blank')}
+                        onClick={() => window.open(import.meta.env.VITE_ADMIN_URL, '_blank')}
                         className='bg-primary text-white text-xs px-4 py-2 rounded-full hover:bg-gray-700 hidden md:block'
                     >
                         Admin Panel
