@@ -36,9 +36,9 @@ function Navbar() {
                     <li className='py-1'>CONTACT</li>
                     <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden' />
                 </NavLink>
-                <NavLink to={process.env.VITE_ADMIN_URL} target="_blank" rel="noopener noreferrer">
+                <a href={process.env.VITE_ADMIN_URL} target="_blank" rel="noopener noreferrer">
                     <li className='text-sm border border-gray-300 px-2 py-1 rounded-full'>Admin Panel</li>
-                </NavLink>
+                </a>
             </ul>
             <div className='flex items-center gap-4'>
                 {
