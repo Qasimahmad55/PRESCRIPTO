@@ -46,7 +46,7 @@ const AppContextProvider = (props) => {
     }
 
     const value = {
-        doctors, currencySymbol, backendUrl, token, setToken, userData, setUserData,  getDoctorsData
+        doctors, currencySymbol, backendUrl, token, setToken, userData, setUserData, getDoctorsData, loadUserProfileData
     }
 
     useEffect(() => {
